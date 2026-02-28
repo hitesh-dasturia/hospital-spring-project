@@ -1,2 +1,2 @@
-# hospital-spring-project
-it contain both frontend and backend .
+# hospital-spring-backend-project
+it contain backend of hospital project .
