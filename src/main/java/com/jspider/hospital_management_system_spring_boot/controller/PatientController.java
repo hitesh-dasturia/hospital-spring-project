@@ -1,0 +1,60 @@
+package com.jspider.hospital_management_system_spring_boot.controller;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import com.jspider.hospital_management_system_spring_boot.entity.Patient;
+import com.jspider.hospital_management_system_spring_boot.service.PatientsService;
+
+@RestController
+@RequestMapping("/api/patient")
+@CrossOrigin(value = "http://localhost:5173")
+public class PatientController {
+
+    @Autowired
+    private PatientsService service;
+
+    @PostMapping
+    public ResponseEntity<?> savePatientController(@RequestBody Patient patient) {
+        Patient saved = service.savePatient(patient);
+        if (saved == null) {
+            return ResponseEntity.badRequest().body("Patient with this email already exists.");
+        }
+        return ResponseEntity.ok(saved);
+    }
+
+    @GetMapping
+    public List<Patient> getAllPatientController() {
+        return service.getAllPatient();
+    }
+
+    @GetMapping(value = "/{id}")
+    public Optional<Patient> getPatientByIdController(@PathVariable int id) {
+        return service.getPatientById(id);
+    }
+
+    @GetMapping(value = "/contactNumber/{contactNumber}")
+    public Patient findByContactNumberController(@PathVariable String contactNumber) {
+        return service.findByContactNumber(contactNumber);
+    }
+
+    @GetMapping(value = "/email/{email}")
+    public Patient findByEmailController(@PathVariable String email) {
+        return service.findByEmail(email);
+    }
+
+    @PostMapping(value = "/exists/{email}")
+    public boolean existsByEmailController(@PathVariable String email) {
+        return service.existsByEmail(email);
+    }
+
+    @PostMapping(value = "/auth")
+    public boolean authenticatePatientCredentialsController(
+            @RequestParam int patientId, @RequestParam String password) {
+        return service.authenticatePatientCredentials(patientId, password);
+    }
+}
