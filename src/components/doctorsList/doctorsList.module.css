@@ -1,0 +1,98 @@
+/* Main container styling */
+.doctorsListContainer {
+    padding: 2px;
+    text-align: center;
+    /* background-color: rgba(0, 195, 255, 0.192); */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Scroll container: restricts height for only 2 visible cards */
+.scrollContainer {
+    height: 910px; /* Adjust this height based on card size to fit 2 cards */
+    width: 100%; /* Adjust width based on card size */
+    overflow-y: auto; /* Enable vertical scrolling */
+    border-radius: 10px;
+    padding: 10px;
+    background: rgba(82, 126, 0, 0.397);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+/* Hide default scrollbar */
+.scrollContainer::-webkit-scrollbar {
+    display: none;
+}
+
+/* Card container for vertical arrangement */
+.cardsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+/* Individual card design */
+.card {
+    background: #fafca480;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    flex: 0 0 auto; /* Prevent resizing */
+    text-align: left;
+}
+
+/* Card content */
+.card h3 {
+    margin: 0;
+    color: #000000;
+    font-size: x-large;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.card p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+/* Edit button styling */
+.editButton {
+    margin-top: 10px;
+    padding: 8px;
+    width: 100%;
+    background: rgb(0, 162, 255);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.editButton:hover {
+    background: rgb(0, 56, 139);
+}
+
+/* Delete button styling */
+.deleteButton {
+    margin-top: 10px;
+    padding: 8px;
+    width: 100%;
+    background: red;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.deleteButton:hover {
+    background: darkred;
+}
+
+/* Error message */
+.error {
+    color: red;
+    font-size: 14px;
+}
